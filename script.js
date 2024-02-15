@@ -41,13 +41,22 @@ function atualizarListaTarefas() {
   const listaTarefas = document.getElementById("listaTarefas");
   listaTarefas.innerHTML = "";
   for (let tarefa of tarefas) {
-    const tarefaElemento = document.createElement("div");
-    tarefaElemento.setAttribute("class", "my-2");
-    tarefaElemento.textContent = tarefa.tarefa;
+    const tarefaElemento = document.createElement("li");
+    tarefaElemento.setAttribute("class", "list-group-item text-break");
+    tarefaElemento.innerHTML =
+      "<strong>ID: </strong>" +
+      tarefa.id +
+      "<br/><strong>Tarefa: </strong>" +
+      tarefa.tarefa;
+    listaTarefas.appendChild(tarefaElemento);
+    tarefaElemento.appendChild(document.createElement("br"));
 
     const botaoEditar = document.createElement("button");
     botaoEditar.textContent = "Editar";
-    botaoEditar.setAttribute("class", "btn btn-outline-primary btn-sm ms-2");
+    botaoEditar.setAttribute(
+      "class",
+      "btn btn-outline-primary btn-sm me-2 mt-2 rounded-2"
+    );
     botaoEditar.onclick = function () {
       editarTarefa(tarefa.id);
     };
@@ -55,7 +64,10 @@ function atualizarListaTarefas() {
 
     const botaoRemover = document.createElement("button");
     botaoRemover.textContent = "Remover";
-    botaoRemover.setAttribute("class", "btn btn-outline-primary btn-sm ms-2");
+    botaoRemover.setAttribute(
+      "class",
+      "btn btn-outline-primary btn-sm mt-2 rounded-2"
+    );
     botaoRemover.onclick = function () {
       removerTarefa(tarefa.id);
     };
